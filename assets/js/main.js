@@ -1,1 +1,1 @@
-console.log('Dubdap site with hotlinked assets loaded');
+console.log('Dubdap site with local assets + sizing fixes loaded');

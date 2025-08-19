@@ -41,7 +41,7 @@
     <img class="resp" src="assets/img/feature_faces.png" alt="Faces and icons" loading="lazy" decoding="async" width="1200" height="800">
     <img class="resp" src="assets/img/feature_icons.png" alt="Partner icons" loading="lazy" decoding="async" width="1200" height="800">
     <img class="resp" src="assets/img/calendar1.png" alt="Calendar 1" loading="lazy" decoding="async" width="1200" height="800">
-    <img class="resp" src="assets/img/calendar2.png" alt="Calendar 2" loading="lazy" decoding="async" width="1200" height="800">
+    <img class="resp" src="assets/img/calendar2.png.svg" alt="Calendar 2" loading="lazy" decoding="async" width="1200" height="800">
   </div>
 </section>
 

@@ -21,4 +21,13 @@ body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(124,92,2
 .section{padding:40px 0}.small{font-size:14px;color:var(--muted)}
 .footer{border-top:1px solid #ffffff12;color:var(--muted);padding:28px 0 60px;margin-top:64px;font-size:14px}
 .gallery{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}@media (max-width:880px){.gallery{grid-template-columns:1fr}}
-img.resp{width:100%;height:auto;border-radius:12px;display:block}
+img.resp{display:block;width:100%;height:auto;border-radius:12px}
+/* ✨ Fix overlarge images */
+.hero .card img{max-width:100%;height:auto;border-radius:12px}
+.hero .card{align-self:start}
+/* Clamp hero image height to avoid huge scaling */
+@media (min-width: 881px){
+  .hero .card img{max-height:480px;object-fit:contain}
+}
+/* Ensure images never overflow their card */
+.card img{max-width:100%;height:auto}
