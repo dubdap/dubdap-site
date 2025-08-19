@@ -1,12 +1,12 @@
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
+    const menuButton = document.querySelector('.menu-button');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
+    if (menuButton && navMenu) {
+        menuButton.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            menuButton.classList.toggle('active');
         });
         
         // Close mobile menu when clicking on a link
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+                menuButton.classList.remove('active');
             });
         });
     }
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
+                const headerHeight = document.querySelector('.fixed-nav').offsetHeight;
                 const targetPosition = targetSection.offsetTop - headerHeight;
                 
                 window.scrollTo({
@@ -40,39 +40,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Header scroll effect
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.fixed-nav');
     let lastScrollTop = 0;
     
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            header.style.background = 'rgba(0, 0, 0, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
         } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.boxShadow = 'none';
         }
         
         lastScrollTop = scrollTop;
     });
     
-    // Form submission handling
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    // Subscribe form handling
+    const subscribeForm = document.querySelector('.subscribe-form form');
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form data
             const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
+            const email = formData.get('email') || this.querySelector('input[type="email"]').value;
             
             // Basic validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields.', 'error');
+            if (!email) {
+                showNotification('Please enter your email address.', 'error');
                 return;
             }
             
@@ -82,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Simulate form submission (replace with actual form handling)
-            showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+            showNotification('Thank you for subscribing! We\'ll keep you updated about Dubdap.', 'success');
             
             // Reset form
             this.reset();
@@ -98,24 +95,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
             }
         });
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.service-card, .about-content, .contact-content');
+    const animatedElements = document.querySelectorAll('.fade-in-on-scroll');
     animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
     
-    // Service card hover effects
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
+    // Card item hover effects
+    const cardItems = document.querySelectorAll('.card-item');
+    cardItems.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
         });
@@ -125,12 +118,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Phone slider functionality
+    const phoneSlider = document.querySelector('.phone-slider');
+    if (phoneSlider) {
+        let currentSlide = 0;
+        const slides = phoneSlider.querySelectorAll('.phone-slide');
+        const totalSlides = slides.length;
+        
+        // Auto-advance slides
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }, 3000);
+        
+        // Manual navigation
+        const leftArrow = phoneSlider.querySelector('.phone-slider-arrow-left');
+        const rightArrow = phoneSlider.querySelector('.phone-slider-arrow-right');
+        
+        if (leftArrow) {
+            leftArrow.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            });
+        }
+        
+        if (rightArrow) {
+            rightArrow.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            });
+        }
+        
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.style.opacity = '1';
+                    slide.style.transform = 'translateX(0)';
+                } else {
+                    slide.style.opacity = '0';
+                    slide.style.transform = `translateX(${index > currentSlide ? '100%' : '-100%'})`;
+                }
+            });
+        }
+        
+        // Initialize slider
+        updateSlider();
+    }
+    
     // Parallax effect for hero section
-    const heroSection = document.querySelector('.hero');
+    const heroSection = document.querySelector('.section-hero');
     if (heroSection) {
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
+            const rate = scrolled * -0.3;
             heroSection.style.transform = `translateY(${rate}px)`;
         });
     }
@@ -139,6 +179,15 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
+    
+    // Initialize hero text animations
+    setTimeout(() => {
+        const heroText1 = document.querySelector('.hero-text._1');
+        const heroText2 = document.querySelector('.hero-text._2');
+        
+        if (heroText1) heroText1.style.opacity = '1';
+        if (heroText2) heroText2.style.opacity = '1';
+    }, 500);
 });
 
 // Utility functions
@@ -261,12 +310,48 @@ loadingStyles.textContent = `
         opacity: 1;
     }
     
-    .service-card,
-    .about-content,
-    .contact-content {
+    .fade-in-on-scroll {
         opacity: 0;
         transform: translateY(30px);
         transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Phone slider transitions */
+    .phone-slide {
+        transition: all 0.5s ease;
+    }
+    
+    /* Mobile menu styles */
+    @media (max-width: 768px) {
+        .nav-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        
+        .nav-menu.active {
+            display: flex;
+        }
+        
+        .nav-menu .nav-link {
+            padding: 1rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .nav-menu .nav-link:last-child {
+            border-bottom: none;
+        }
     }
 `;
 
@@ -297,10 +382,10 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         // Close mobile menu if open
         const navMenu = document.querySelector('.nav-menu');
-        const hamburger = document.querySelector('.hamburger');
+        const menuButton = document.querySelector('.menu-button');
         if (navMenu && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
+            menuButton.classList.remove('active');
         }
         
         // Close notifications
@@ -321,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         position: absolute;
         top: -40px;
         left: 6px;
-        background: #667eea;
+        background: #ff6b35;
         color: white;
         padding: 8px;
         text-decoration: none;
@@ -346,4 +431,26 @@ document.addEventListener('DOMContentLoaded', function() {
         main.id = 'main';
         main.setAttribute('role', 'main');
     }
+});
+
+// Add smooth reveal animations for elements
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.fade-in-on-scroll');
+    
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    revealOnScroll();
 });
