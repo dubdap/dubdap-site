@@ -1,55 +1,269 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dubdap — Meetups made easy</title>
-  <meta name="description" content="Download now and start sharing QR appointments with others. Manage it all, in this fresh new system.">
-  <link rel="icon" href="./assets/img/hero.png" type="image/png">
-  <link rel="stylesheet" href="./assets/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DubDap - Innovative Technology Solutions & Digital Transformation</title>
+    <meta name="description" content="DubDap - Your trusted partner for innovative technology solutions, digital transformation, web development, mobile apps, cloud services, and cybersecurity. Transform your business with cutting-edge digital solutions.">
+    <meta name="keywords" content="DubDap, technology solutions, digital transformation, web development, mobile apps, cloud services, cybersecurity, data analytics">
+    <meta name="author" content="DubDap">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dubdap.com/">
+    <meta property="og:title" content="DubDap - Innovative Technology Solutions">
+    <meta property="og:description" content="Empowering businesses with cutting-edge technology solutions and digital innovation. Web development, mobile apps, cloud services, and more.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dubdap.com/">
+    <meta property="twitter:title" content="DubDap - Innovative Technology Solutions">
+    <meta property="twitter:description" content="Empowering businesses with cutting-edge technology solutions and digital innovation.">
+    <meta property="twitter:image" content="assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DubDap",
+        "url": "https://dubdap.com",
+        "logo": "assets/logos/dubdap-logo.png",
+        "description": "Empowering businesses with innovative technology solutions and digital transformation",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tech City",
+            "addressRegion": "Innovation District"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-123-4567",
+            "contactType": "customer service",
+            "email": "hello@dubdap.com"
+        },
+        "sameAs": [
+            "https://linkedin.com/company/dubdap",
+            "https://twitter.com/dubdap",
+            "https://github.com/dubdap"
+        ]
+    }
+    </script>
 </head>
 <body>
-  <nav class="nav"><div class="container nav-inner">
-    <a class="brand" href="index.html"><span class="brand-dot"></span> Dubdap</a>
-    <div><a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a> <a href="contact.html">Contact</a></div>
-  </div></nav>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="assets/logos/dubdap-logo.png" alt="DubDap Logo" class="logo-image">
+                    <h1>DubDap</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-wrap">
-        <div>
-          <div class="hero-kicker">
-            <span style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#7c5cff,#48d4b5);display:inline-block"></span>
-            <span>Download now and start sharing QR appointments with others.</span>
-          </div>
-          <h1>Manage it all, in<br>this fresh new system.</h1>
-          <p class="lead">Safe · Private · Secure · Fast and Easy</p>
-          <div class="cta">
-            <a class="btn primary" href="https://apps.apple.com/us/app/dubdap/id1636517245" target="_blank" rel="noopener">
-              <img src="./assets/icons/apple.svg" alt="" aria-hidden="true"> Download for iOS
-            </a>
-            <a class="btn" href="https://play.google.com/store/apps/details?id=com.dubdap" target="_blank" rel="noopener">
-              <img src="./assets/icons/play.svg" alt="" aria-hidden="true"> Download for Android
-            </a>
-          </div>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to <span class="highlight">DubDap</span></h1>
+                    <p class="hero-subtitle">Empowering businesses with cutting-edge technology solutions and digital innovation</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">Explore Services</a>
+                        <a href="#contact" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-graphic">
+                        <div class="floating-element"></div>
+                        <div class="floating-element"></div>
+                        <div class="floating-element"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <img src="assets/images/feature-1.png" alt="Digital Transformation" class="service-icon-image">
+                        </div>
+                        <h3>Digital Transformation</h3>
+                        <p>Modernize your business processes with cutting-edge digital solutions that drive growth and efficiency.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <img src="assets/images/feature-2.png" alt="Web Development" class="service-icon-image">
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Custom web applications and websites built with modern technologies and best practices.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Mobile Solutions</h3>
+                        <p>Native and cross-platform mobile applications that engage your users and drive business results.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">☁️</div>
+                        <h3>Cloud Services</h3>
+                        <p>Scalable cloud infrastructure and migration services to optimize your operations.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔒</div>
+                        <h3>Cybersecurity</h3>
+                        <p>Comprehensive security solutions to protect your digital assets and ensure compliance.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Data Analytics</h3>
+                        <p>Transform your data into actionable insights with advanced analytics and visualization tools.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">About DubDap</h2>
+                        <p>DubDap is a forward-thinking technology company dedicated to helping businesses thrive in the digital age. We combine innovation, expertise, and passion to deliver solutions that make a real difference.</p>
+                        <p>Our team of experienced professionals works closely with clients to understand their unique challenges and develop tailored solutions that drive success.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <h3>50+</h3>
+                                <p>Projects Completed</p>
+                            </div>
+                            <div class="stat">
+                                <h3>25+</h3>
+                                <p>Happy Clients</p>
+                            </div>
+                            <div class="stat">
+                                <h3>5+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="about-graphic"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Ready to Start Your Project?</h3>
+                        <p>Let's discuss how DubDap can help transform your business with innovative technology solutions.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <p>hello@dubdap.com</p>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📱</span>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <p>Innovation District, Tech City</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DubDap</h3>
+                    <p>Empowering businesses with innovative technology solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Digital Transformation</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">Mobile Solutions</a></li>
+                        <li><a href="#services">Cloud Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="GitHub">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DubDap. All rights reserved.</p>
+            </div>
         </div>
-        <figure class="hero-visual">
-          <img src="./assets/img/hero.png" alt="iPhone showing Dubdap calendar & chat">
-        </figure>
-      </div>
-    </section>
+    </footer>
 
-    <section class="section">
-      <div class="container">
-        <p class="small">This hero mirrors the live site’s structure and copy while using local assets for speed and reliability.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer"><div class="container">
-    <div>© 2023–2025 Dubdap</div>
-    <div class="small">media@dubdap.com</div>
-  </div></footer>
-
-  <script src="./assets/js/main.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
