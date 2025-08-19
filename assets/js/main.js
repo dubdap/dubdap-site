@@ -1,1 +1,1 @@
-console.log('Dubdap site with local assets + sizing fixes loaded');
+console.log('Dubdap site with embedded hero image');

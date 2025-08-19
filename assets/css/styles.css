@@ -10,24 +10,26 @@ body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(124,92,2
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:700}
 .brand-logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent));box-shadow:0 0 0 3px rgba(124,92,255,.2)}
 .nav a{color:var(--muted);text-decoration:none;margin-left:18px}.nav a:hover{color:var(--text)}
-.hero{padding:clamp(48px,8vw,120px) 0 64px;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
-@media (max-width:880px){.hero{grid-template-columns:1fr}}
+
+.hero{padding:clamp(48px,8vw,120px) 0 64px;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+@media (max-width:960px){.hero{grid-template-columns:1fr}}
 .h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:0 0 16px}
 .lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);margin:0 0 28px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid #ffffff1a;text-decoration:none;color:var(--text);font-weight:600}
 .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#0b0b0f}
 .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid #ffffff14;border-radius:16px;padding:20px}
+
+.hero .visual{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid #ffffff14;border-radius:16px;padding:0;overflow:hidden}
+.hero-image{display:block;width:100%;height:auto}
+/* prevent giant hero: clamp height and preserve aspect ratio */
+@media (min-width: 961px){
+  .hero-image{max-height:520px;object-fit:contain}
+}
+/* On small screens, keep spacing comfy */
+@media (max-width: 960px){
+  .hero{gap:18px}
+}
+
 .grid{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}@media (max-width:880px){.grid{grid-template-columns:1fr}}
 .section{padding:40px 0}.small{font-size:14px;color:var(--muted)}
 .footer{border-top:1px solid #ffffff12;color:var(--muted);padding:28px 0 60px;margin-top:64px;font-size:14px}
-.gallery{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}@media (max-width:880px){.gallery{grid-template-columns:1fr}}
-img.resp{display:block;width:100%;height:auto;border-radius:12px}
-/* ✨ Fix overlarge images */
-.hero .card img{max-width:100%;height:auto;border-radius:12px}
-.hero .card{align-self:start}
-/* Clamp hero image height to avoid huge scaling */
-@media (min-width: 881px){
-  .hero .card img{max-height:480px;object-fit:contain}
-}
-/* Ensure images never overflow their card */
-.card img{max-width:100%;height:auto}
