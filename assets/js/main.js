@@ -1,1 +1,1 @@
-console.log('Dubdap static site loaded');
+console.log('Dubdap site with hotlinked assets loaded');
