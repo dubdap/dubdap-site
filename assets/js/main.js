@@ -1,1 +1,1 @@
-console.log('Dubdap site with embedded hero image');
+console.log('Dubdap near-clone with local assets');
