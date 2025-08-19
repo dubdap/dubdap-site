@@ -17,11 +17,7 @@ body {
     background: #000;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { max-width: 1100px; margin-inline: auto; padding: 24px; }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
@@ -34,6 +30,24 @@ p {
     margin-bottom: 1rem;
     color: #666;
 }
+
+/* Global image sanity */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Common hero/device blocks */
+.hero-img,
+.device,
+.screenshot {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* Grid helpers */
+.grid { display: grid; gap: 16px; }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 960px) { .grid--3 { grid-template-columns: 1fr 1fr; } }
 
 .text-gradient-2 {
     background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff6b35 100%);
@@ -79,6 +93,19 @@ p {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
 }
+
+/* Optional alternative button API */
+.btn {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: #ff6b35;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+.btn--ghost { background: transparent; border-color: #1e1e24; color: #f7f7fb; }
 
 .button.download {
     display: flex;
@@ -407,9 +434,7 @@ p {
 }
 
 /* Sections */
-.section {
-    padding: 80px 0;
-}
+.section { padding: 40px 0; }
 
 .section.second {
     background: white;

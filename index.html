@@ -109,10 +109,10 @@
                             <div class="product-phone-image-container">
                                 <div class="product-container">
                                     <div class="product-phone-image-holder">
-                                        <img src="assets/images/iphone-mockup.png" alt="iPhone 11 image" class="product-phone-image">
+                                        <img src="assets/images/iphone-mockup.png" alt="iPhone 11 image" class="product-phone-image device" loading="lazy">
                                         <div class="product-phone-content">
-                                            <img src="assets/images/chat-screen.jpg" alt="Chat screen of people based chats" class="product-phone-demo-image">
-                                            <img src="assets/images/lock-screen.jpg" alt="iPhone 11 orange and pink background" class="iphone-lock-screen-image">
+                                            <img src="assets/images/chat-screen.jpg" alt="Chat screen of people based chats" class="product-phone-demo-image screenshot" loading="lazy">
+                                            <img src="assets/images/lock-screen.jpg" alt="iPhone 11 orange and pink background" class="iphone-lock-screen-image screenshot" loading="lazy">
                                         </div>
                                     </div>
                                     <a href="#" class="play-icon-holder">
@@ -322,7 +322,7 @@
                                         <div class="card-iphone-overlay"></div>
                                         <div class="card-phone-image-container">
                                             <img src="assets/icons/shopping-cart.svg" alt="Shopping cart icon" class="card-iphone-screelock">
-                                            <img src="assets/images/feature-1.png" alt="Bold green of an app screen" class="width-pct">
+                                            <img src="assets/images/feature-1.png" alt="Bold green of an app screen" class="width-pct screenshot" loading="lazy">
                                         </div>
                                     </div>
                                     <div class="text-center">
@@ -341,8 +341,8 @@
                                         <img src="assets/images/iphone-mockup.png" alt="iPhone 11 image" class="card-iphone-image">
                                         <div class="card-iphone-overlay"></div>
                                         <div class="card-phone-image-container">
-                                            <img src="assets/images/calendar-1.png" alt="Calendar screen on iOS apple phone" class="card-iphone-screelock">
-                                            <img src="assets/images/calendar-2.png" alt="Calendar screen on iOS apple phone" class="width-pct">
+                                            <img src="assets/images/calendar-1.png" alt="Calendar screen on iOS apple phone" class="card-iphone-screelock screenshot" loading="lazy">
+                                            <img src="assets/images/calendar-2.png" alt="Calendar screen on iOS apple phone" class="width-pct screenshot" loading="lazy">
                                         </div>
                                     </div>
                                     <div class="text-center">
@@ -435,13 +435,13 @@
                                 <div class="phone-slider">
                                     <div class="phone-slider-mask">
                                         <div class="phone-slide">
-                                            <img src="assets/images/feature-1.png" alt="Dubdap app icon Home Screen with qr on main screen." class="phone-slide-image">
+                                            <img src="assets/images/feature-1.png" alt="Dubdap app icon Home Screen with qr on main screen." class="phone-slide-image screenshot" loading="lazy">
                                         </div>
                                         <div class="phone-slide">
-                                            <img src="assets/images/calendar-1.png" alt="Calendar screen on iOS apple phone" class="phone-slide-image">
+                                            <img src="assets/images/calendar-1.png" alt="Calendar screen on iOS apple phone" class="phone-slide-image screenshot" loading="lazy">
                                         </div>
                                         <div class="phone-slide">
-                                            <img src="assets/images/calendar-2.png" alt="Calendar screen on iOS apple phone" class="phone-slide-image">
+                                            <img src="assets/images/calendar-2.png" alt="Calendar screen on iOS apple phone" class="phone-slide-image screenshot" loading="lazy">
                                         </div>
                                     </div>
                                     <div class="phone-slider-arrows phone-slider-arrow-left">
@@ -512,12 +512,13 @@
                     </ul>
                 </div>
                 <div class="footer-copyright">
-                    <div class="grey-text">Copyright 2023© <strong>Dubdap</strong></div>
+                    <div class="grey-text">Copyright <span id="year">2023</span>© <strong>Dubdap</strong></div>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>document.getElementById('year')?.replaceChildren(new Date().getFullYear())</script>
 </body>
 </html>
