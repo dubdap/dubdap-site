@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schedule — Dubdap</title>
+  <meta name="description" content="Pick a time and add it to your calendar in one tap." />
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Dubdap" width="28" height="28" />
+        Dubdap
+      </a>
+      <div class="links">
+        <a href="schedule.html" class="btn secondary">Schedule</a>
+        <a href="create.html" class="btn">Create QR</a>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <h2 style="margin-top:0">Book a slot</h2>
+          <p class="helper" style="margin-top:-6px">Choose a time below to download a calendar invite.</p>
+          <div id="slot-list" class="form-row" style="margin-top:8px"></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Your details</h3>
+          <div class="form-row">
+            <label class="label" for="name">Name</label>
+            <input id="name" class="input" placeholder="Ada Lovelace" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="email">Email (for your notes)</label>
+            <input id="email" class="input" placeholder="ada@example.com" type="email" />
+          </div>
+          <div class="form-grid">
+            <div>
+              <label class="label" for="title">Meeting title</label>
+              <input id="title" class="input" value="Meeting with Dubdap" />
+            </div>
+            <div>
+              <label class="label" for="duration">Duration</label>
+              <select id="duration" class="input">
+                <option value="15">15 min</option>
+                <option value="30" selected>30 min</option>
+                <option value="45">45 min</option>
+                <option value="60">60 min</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="label" for="location">Location</label>
+            <input id="location" class="input" value="Online" />
+          </div>
+          <div class="form-row">
+            <label class="label" for="notes">Notes</label>
+            <textarea id="notes" class="input" rows="5" placeholder="Anything we should prep?"></textarea>
+          </div>
+          <div id="confirmation" class="helper hidden" style="margin-top:8px"></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Tip</h3>
+          <p class="helper">Set `SITE_URL` in <code>main.js</code> so your landing page QR always points to this scheduler.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Dubdap — QR Meetings</div>
+    </footer>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="schedule.js"></script>
+</body>
+</html>

@@ -1,524 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dubdap</title>
-    <meta name="description" content="Dubdap is the meet me app!">
-    <meta name="keywords" content="Dubdap, meet me app, appointments, QR code, mobile app">
-    <meta name="author" content="Dubdap">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dubdap.com/">
-    <meta property="og:title" content="Dubdap">
-    <meta property="og:description" content="Dubdap is the meet me app!">
-    <meta property="og:image" content="assets/images/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://dubdap.com/">
-    <meta property="twitter:title" content="Dubdap">
-    <meta property="twitter:description" content="Dubdap is the meet me app!">
-    <meta property="twitter:image" content="assets/images/og-image.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dubdap QR Meetings</title>
+  <meta name="description" content="Scan-to-Schedule meetings with QR—fast, friendly, and privacy-first." />
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Optional: Plausible Analytics (uncomment & set domain) -->
+  <!-- <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script> -->
+  <!-- QRCode lib (MIT) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <header class="fixed-nav">
-        <div class="container nav-container">
-            <a href="./" class="brand">
-                <img src="assets/logos/dubdap-logo.png" alt="Dubdap Logo" class="nav-logo">
-            </a>
-            <nav class="nav-menu">
-                <a href="#FeatureListTop" class="nav-link">
-                    <div class="nav-link-text">Feature List</div>
-                </a>
-                <a href="#About" class="nav-link">
-                    <div class="nav-link-text">About Dubdap</div>
-                </a>
-                <a href="#DarkMode" class="nav-link">
-                    <div class="nav-link-text">How To Use</div>
-                </a>
-            </nav>
-            <div class="menu-button">
-                <img src="assets/icons/menu-icon-white.svg" alt="Menu" loading="lazy">
-            </div>
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Dubdap" width="28" height="28" />
+        Dubdap
+      </a>
+      <div class="links">
+        <a href="schedule.html" class="btn secondary">Schedule</a>
+        <a href="create.html" class="btn">Create QR</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2"/></svg> Scan to Schedule</span>
+        <h1>Make meetings effortless with a single scan.</h1>
+        <p class="lede">Share a QR code that opens your live scheduler. Guests pick a slot, download a calendar invite, and you're done.</p>
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <a href="schedule.html" class="btn">Open Scheduler</a>
+          <a href="#how" class="btn secondary">How it works</a>
         </div>
-    </header>
+      </div>
+      <div class="hero-media">
+        <div class="card">
+          <div class="kicker">Your QR, always fresh</div>
+          <div id="hero-qr" class="qr-wrap">
+            <div class="qr-canvas"></div>
+          </div>
+          <div class="helper" style="margin-top:10px">This QR points to your <em>schedule</em> page—update your domain in <code>main.js</code>.</div>
+        </div>
+        <img src="assets/hero.jpg" alt="Scheduling preview" class="card" style="padding:0"/>
+      </div>
+    </section>
 
-    <main>
-        <section class="section-hero">
-            <div class="ellipses-holder">
-                <div class="ellipse-right"></div>
-                <div class="ellipse-left"></div>
-            </div>
-            <div class="main-hero-container">
-                <div class="small-container">
-                    <div class="text-center">
-                        <div class="app-icon-holder">
-                            <img src="assets/images/qr-code.png" alt="QR code logo" class="app-icon">
-                        </div>
-                        <h1 class="main-heading">Meetups made easy</h1>
-                        <div class="grid-10-columns">
-                            <p class="hero-description">Safe Private Secure Fast and Easy</p>
-                        </div>
-                        <div class="download-buttons hero-download-buttons">
-                            <div class="download-button">
-                                <a href="https://apps.apple.com/us/app/dubdap/id1636517245" target="_blank" class="button download">
-                                    <img src="assets/icons/apple-icon.svg" alt="Apple Inc. logo" class="download-button-icon">
-                                    <div>Download for iOS</div>
-                                </a>
-                            </div>
-                            <div class="download-button last">
-                                <a href="https://play.google.com/store/apps" target="_blank" class="button download">
-                                    <img src="assets/icons/android-icon.svg" alt="Google Android logo" class="download-button-icon">
-                                    <div>Download for Android</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="small-container">
-                    <div class="hero-text-sticky">
-                        <div class="hero-text-holder">
-                            <div class="hero-text-holder-1">
-                                <h2 class="hero-text _1">Meet</h2>
-                            </div>
-                            <div class="hero-text-line"></div>
-                            <div class="hero-text-holder-2">
-                                <h2 class="hero-text _2">Dubdap</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-product-demo">
-                        <div class="product-demo-sticky">
-                            <div class="product-phone-image-container">
-                                <div class="product-container">
-                                    <div class="product-phone-image-holder">
-                                        <img src="assets/images/iphone-mockup.png" alt="iPhone 11 image" class="product-phone-image device" loading="lazy">
-                                        <div class="product-phone-content">
-                                            <img src="assets/images/chat-screen.jpg" alt="Chat screen of people based chats" class="product-phone-demo-image screenshot" loading="lazy">
-                                            <img src="assets/images/lock-screen.jpg" alt="iPhone 11 orange and pink background" class="iphone-lock-screen-image screenshot" loading="lazy">
-                                        </div>
-                                    </div>
-                                    <a href="#" class="play-icon-holder">
-                                        <img src="assets/icons/play-button.svg" alt="Play button in orange and pink matching iOS background" class="play-icon-image">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section second">
-            <div class="container">
-                <div class="customers-panel">
-                    <div class="text-holder">
-                        <div class="text-center">
-                            <div class="fade-in-on-scroll">
-                                <h5 class="heading">Dubdap the new action word for appointment making</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-5-col">
-                        <div class="content centered">
-                            <img src="assets/icons/instagram.svg" alt="Instagram logo" class="customer-image">
-                        </div>
-                        <div class="content centered">
-                            <img src="assets/icons/twitter.svg" alt="Twitter logo" class="customer-image">
-                        </div>
-                        <div class="content centered">
-                            <img src="assets/icons/linkedin.svg" alt="LinkedIn logo" class="customer-image">
-                        </div>
-                        <div class="content centered">
-                            <img src="assets/icons/facebook.svg" alt="Facebook logo" class="customer-image">
-                        </div>
-                        <div class="content centered">
-                            <img src="assets/icons/apple-icon.svg" alt="Apple logo" class="customer-image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="FeatureListTop" class="section light-blue-bg">
-            <div class="container">
-                <div class="text-center">
-                    <div class="fade-in-on-scroll">
-                        <h2 class="text-gradient-2">Experience effortless appointments and make new connections.</h2>
-                    </div>
-                    <div class="text-container">
-                        <div class="fade-in-on-scroll">
-                            <p>Dubdap keeps you moving with an average appointment creation in under 30 seconds. Share your contact QR in less than 10!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature-grid">
-                    <div class="card-item light">
-                        <div class="card-item-content">
-                            <div class="fade-in-on-scroll">
-                                <h4>The Meeting App For Everyone</h4>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p>Use it for business, use it for pleasure. Use it for you.<br><br>For contractors, friends, explorers, dreamers,<br>doers, hustlers, go getters and adventurers.<br></p>
-                            </div>
-                        </div>
-                        <img src="assets/images/feature-1.png" alt="Feature image of faces and icons" class="feature-1-image">
-                    </div>
-                    <div class="card-item light">
-                        <img src="assets/images/feature-2.png" alt="Feature image of icons from different place" class="feature-2-image">
-                        <div class="card-item-content">
-                            <div class="fade-in-on-scroll">
-                                <h4>QR Token Based Meetings and Contacts</h4>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p>Easily create events, add attendees and forward invites as fast as you can draw your mobile.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-item light">
-                        <div class="card-item-content">
-                            <div class="card-feature-center">
-                                <div class="fade-in-on-scroll">
-                                    <img src="assets/icons/share-apple.svg" alt="Apple share button" class="card-feature-icon">
-                                </div>
-                                <div class="fade-in-on-scroll">
-                                    <p>Quickly share your appointments with anyone, unlimited forwarding!</p>
-                                </div>
-                                <div class="fade-in-on-scroll">
-                                    <h6>Quick Confirm Features and Meeting Requests</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-item light">
-                        <div class="card-item-content">
-                            <div class="card-feature-center">
-                                <div class="fade-in-on-scroll">
-                                    <img src="assets/images/qr-code.png" alt="QR code logo" class="card-feature-icon">
-                                </div>
-                                <div class="fade-in-on-scroll">
-                                    <h6>Easily create digital events and transform them into a QR token</h6>
-                                </div>
-                                <div class="fade-in-on-scroll">
-                                    <p>Create digital appointments sync'd to your calendar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-item light">
-                        <div class="card-item-content">
-                            <div class="card-feature-center">
-                                <div class="fade-in-on-scroll">
-                                    <img src="assets/icons/lock-icon.svg" alt="lock image for secure appointment" class="card-feature-icon">
-                                </div>
-                                <div class="fade-in-on-scroll">
-                                    <h6>Secure appointments</h6>
-                                </div>
-                                <div class="fade-in-on-scroll">
-                                    <p>Create appointments with no phone messages or emails.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="About" class="section">
-            <div class="container">
-                <div class="grid-6-col">
-                    <div class="trusted-content">
-                        <div class="content-sticky">
-                            <div class="fade-in-on-scroll">
-                                <h2>We are trusted by thousands of people</h2>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p class="text-xl">Data is encrypted, anonymous and limited to the details you share. Events and contact info is 100% private to you and your parties.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="trusted-content trusted-list">
-                        <div class="trusted-overlay-container">
-                            <div class="trusted-white-overlay"></div>
-                            <div class="trusted-white-overlay bottom"></div>
-                        </div>
-                        <div class="trusted-item">
-                            <div class="trusted-item-header">
-                                <h2 class="trusted-no">Zero</h2>
-                                <h5>stress in party coordination</h5>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p class="text-xl">Dubdap erases the hassle and burdensome tasks of exchanging contact information.</p>
-                            </div>
-                        </div>
-                        <div class="trusted-item">
-                            <div class="trusted-item-header">
-                                <h2 class="trusted-no">3</h2>
-                                <h5>steps to success</h5>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p class="text-xl">Scan, Schedule and Save. That's all you need to get started with DubDap running the show.</p>
-                            </div>
-                        </div>
-                        <div class="trusted-item">
-                            <div class="trusted-item-header">
-                                <h2 class="trusted-no">$0<span class="text-small">.00</span></h2>
-                                <h5>everything is FREE</h5>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p class="text-xl">Dubdap doesn't charge a dime for unlimited good times.</p>
-                            </div>
-                        </div>
-                        <div class="trusted-item last">
-                            <div class="trusted-item-header">
-                                <h2 class="trusted-no">100</h2>
-                                <h5>is what you get when you use DubDap</h5>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p class="text-xl">You will not be disappointed. Try it now!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="DarkMode" class="section dark">
-            <div class="container">
-                <div class="grid-10-columns">
-                    <div class="content">
-                        <div class="text-center">
-                            <div class="fade-in-on-scroll">
-                                <h2 class="text-gradient-2">Feels great in low-light environments.</h2>
-                            </div>
-                            <div class="text-container">
-                                <div class="fade-in-on-scroll">
-                                    <p class="white-text">It works great with Dark Mode with endless possibilities to collaborate with others.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-6-col">
-                            <div class="card-item">
-                                <div class="card-item-content">
-                                    <div class="card-iphone">
-                                        <img src="assets/images/iphone-mockup.png" alt="iPhone 11 image" class="card-iphone-image">
-                                        <div class="card-iphone-overlay"></div>
-                                        <div class="card-phone-image-container">
-                                            <img src="assets/icons/shopping-cart.svg" alt="Shopping cart icon" class="card-iphone-screelock">
-                                            <img src="assets/images/feature-1.png" alt="Bold green of an app screen" class="width-pct screenshot" loading="lazy">
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="fade-in-on-scroll">
-                                            <h4 class="white-text">Dark Mode - ON</h4>
-                                        </div>
-                                        <div class="fade-in-on-scroll">
-                                            <p class="light-grey">Your choice if you want to label your contacts and events. Keep it simple with minimal details or write a book and share that appointment!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-item">
-                                <div class="card-item-content">
-                                    <div class="card-iphone">
-                                        <img src="assets/images/iphone-mockup.png" alt="iPhone 11 image" class="card-iphone-image">
-                                        <div class="card-iphone-overlay"></div>
-                                        <div class="card-phone-image-container">
-                                            <img src="assets/images/calendar-1.png" alt="Calendar screen on iOS apple phone" class="card-iphone-screelock screenshot" loading="lazy">
-                                            <img src="assets/images/calendar-2.png" alt="Calendar screen on iOS apple phone" class="width-pct screenshot" loading="lazy">
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="fade-in-on-scroll">
-                                            <h4 class="white-text">3x Experience</h4>
-                                        </div>
-                                        <div class="fade-in-on-scroll">
-                                            <p class="light-grey">Choose to sync with your built in calendar. Import and Export with ease. You choose what details to share.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dont-take-our-word-title">
-                            <div class="fade-in-on-scroll">
-                                <h3 class="white-text">Don't take our word for it.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="FeatureList" class="section light-blue-bg">
-            <div class="container">
-                <div class="grid-10-columns">
-                    <div class="card-item light">
-                        <div class="card-item-content">
-                            <div class="fade-in-on-scroll">
-                                <h2 class="text-gradient-2">Stay tuned &<br>DubDap It</h2>
-                            </div>
-                            <div class="fade-in-on-scroll">
-                                <p class="text-xs">We will email you only about this product.</p>
-                            </div>
-                            <div id="Subscribe" class="subscribe-form">
-                                <form class="subscribe-form-flex">
-                                    <div class="subscribe-form-input-wrapper">
-                                        <input type="email" class="form-input subscribe-input" placeholder="Your Email" required>
-                                    </div>
-                                    <input type="submit" value="" class="button btn-subscribe">
-                                </form>
-                                <div class="success-message">
-                                    <div>Thank you! Your submission has been received!</div>
-                                </div>
-                                <div class="error-message">
-                                    <div>Oops! Something went wrong while submitting the form.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="Download" class="section light-blue-bg">
-            <div class="container phone-container">
-                <div class="grid-6-col">
-                    <div class="content phone-content-text">
-                        <div class="fade-in-on-scroll">
-                            <div class="app-icon-text-holder">
-                                <div class="app-icon-holder-xs"></div>
-                                <div>Download now and start sharing QR appointments with others.</div>
-                            </div>
-                        </div>
-                        <div class="fade-in-on-scroll">
-                            <h2>Manage it all, in this fresh new system.</h2>
-                        </div>
-                        <div class="download-buttons mobile-vertical">
-                            <div class="download-button">
-                                <div class="fade-in-on-scroll">
-                                    <a href="https://apps.apple.com/us/app/dubdap/id1636517245" target="_blank" class="button download">
-                                        <img src="assets/icons/apple-icon.svg" alt="Apple Inc. logo" class="download-button-icon">
-                                        <div>Download for iOS</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="download-button last">
-                                <div class="fade-in-on-scroll">
-                                    <a href="https://play.google.com/store/apps" target="_blank" class="button download">
-                                        <img src="assets/icons/android-icon.svg" alt="Google Android logo" class="download-button-icon">
-                                        <div>Download for Android</div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="phone-holder-container">
-                            <div class="phone-slider-container">
-                                <div class="phone-slider">
-                                    <div class="phone-slider-mask">
-                                        <div class="phone-slide">
-                                            <img src="assets/images/feature-1.png" alt="Dubdap app icon Home Screen with qr on main screen." class="phone-slide-image screenshot" loading="lazy">
-                                        </div>
-                                        <div class="phone-slide">
-                                            <img src="assets/images/calendar-1.png" alt="Calendar screen on iOS apple phone" class="phone-slide-image screenshot" loading="lazy">
-                                        </div>
-                                        <div class="phone-slide">
-                                            <img src="assets/images/calendar-2.png" alt="Calendar screen on iOS apple phone" class="phone-slide-image screenshot" loading="lazy">
-                                        </div>
-                                    </div>
-                                    <div class="phone-slider-arrows phone-slider-arrow-left">
-                                        <div class="slider-arrow-left"></div>
-                                    </div>
-                                    <div class="phone-slider-arrows phone-slider-arrow-right">
-                                        <div class="slider-arrow-right"></div>
-                                    </div>
-                                    <div class="phone-slide-nav"></div>
-                                </div>
-                            </div>
-                            <img src="assets/images/iphone-mockup.png" alt="A hand holding a iPhone" class="phone-holder-image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section id="how" class="section">
+      <div class="grid">
+        <div class="card feature">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M7 2v4M17 2v4M3 10h18" stroke="currentColor" stroke-width="2"/></svg>
+          <div>
+            <div class="kicker">Step 1</div>
+            <h3>Share your QR</h3>
+            <p class="helper">Add it to email signatures, slides, or a door sign—anywhere people can scan.</p>
+          </div>
+        </div>
+        <div class="card feature">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 1 1 18 0Z" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/></svg>
+          <div>
+            <div class="kicker">Step 2</div>
+            <h3>Pick a time</h3>
+            <p class="helper">Visitors choose from your available slots—fully editable in <code>schedule.js</code>.</p>
+          </div>
+        </div>
+        <div class="card feature">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2"/></svg>
+          <div>
+            <div class="kicker">Step 3</div>
+            <h3>Add to calendar</h3>
+            <p class="helper">A downloadable <code>.ics</code> file adds the meeting to any calendar app.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-social-media-container">
-                <div class="social-media-content">
-                    <div class="fade-in-on-scroll">
-                        <div>Follow us</div>
-                    </div>
-                    <a href="https://www.instagram.com/thedubdap/" target="_blank" class="social-media-link">
-                        <img src="assets/icons/instagram.svg" alt="Instagram" class="social-media-icon">
-                    </a>
-                    <a href="https://twitter.com/Themeetmeapp" target="_blank" class="social-media-link">
-                        <img src="assets/icons/twitter.svg" alt="Twitter" class="social-media-icon">
-                    </a>
-                    <a href="https://www.linkedin.com/company/dubdap/" target="_blank" class="social-media-link">
-                        <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="social-media-icon">
-                    </a>
-                    <a href="https://facebook.com" target="_blank" class="social-media-link">
-                        <img src="assets/icons/facebook.svg" alt="Facebook" class="social-media-icon">
-                    </a>
-                </div>
-                <div class="made-container">
-                    <div class="powered-by"></div>
-                </div>
-            </div>
-            <div class="footer-flex-container">
-                <div class="footer-brand-content">
-                    <a href="./" class="footer-logo-link">
-                        <img src="assets/logos/dubdap-logo.png" alt="Dubdap Logo" class="footer-image">
-                    </a>
-                    <ul class="footer-list">
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="link">
-                                <div>Terms</div>
-                                <div class="link-underline"></div>
-                            </a>
-                        </li>
-                        <li class="footer-list-item">
-                            <a href="privacy.html" class="link">
-                                <div>Privacy</div>
-                                <div class="link-underline"></div>
-                            </a>
-                        </li>
-                        <li class="footer-list-item">
-                            <a href="mailto:media@dubdap.com" class="link">
-                                <div>media@dubdap.com</div>
-                                <div class="link-underline"></div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-copyright">
-                    <div class="grey-text">Copyright <span id="year">2023</span>© <strong>Dubdap</strong></div>
-                </div>
-            </div>
-        </div>
+      <div>© <span id="year"></span> Dubdap — QR Meetings</div>
     </footer>
-
-    <script src="script.js"></script>
-    <script>document.getElementById('year')?.replaceChildren(new Date().getFullYear())</script>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="main.js"></script>
 </body>
 </html>
