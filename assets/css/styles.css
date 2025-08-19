@@ -1,0 +1,27 @@
+
+:root { --bg:#0b0b0f; --card:#12121a; --text:#f6f7fb; --muted:#a8acb6; --accent:#7c5cff; --accent2:#48d4b5; }
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(124,92,255,.10), transparent 60%),
+              radial-gradient(1200px 800px at 0% 120%, rgba(72,212,181,.08), transparent 60%),
+              var(--bg);color:var(--text);
+     font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+.container{width:min(1100px,92%);margin:0 auto}
+.nav{position:sticky;top:0;z-index:20;background:#0b0b0fb3;backdrop-filter:blur(8px);border-bottom:1px solid #ffffff12}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:700}
+.brand-logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent));box-shadow:0 0 0 3px rgba(124,92,255,.2)}
+.nav a{color:var(--muted);text-decoration:none;margin-left:18px}.nav a:hover{color:var(--text)}
+.hero{padding:clamp(48px,8vw,120px) 0 64px;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+@media (max-width:880px){.hero{grid-template-columns:1fr}}
+.h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:0 0 16px}
+.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid #ffffff1a;text-decoration:none;color:var(--text);font-weight:600}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#0b0b0f}
+.card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid #ffffff14;border-radius:16px;padding:20px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)} @media (max-width:880px){.grid{grid-template-columns:1fr}}
+.section{padding:40px 0}
+.kicker{color:var(--accent2);text-transform:uppercase;letter-spacing:.18em;font-weight:700;font-size:12px}
+.small{font-size:14px;color:var(--muted)}
+.footer{border-top:1px solid #ffffff12;color:var(--muted);padding:28px 0 60px;margin-top:64px;font-size:14px}
+pre.code{overflow:auto;border-radius:12px;padding:16px;background:#0f0f15;border:1px solid #ffffff12}
+ul.tight{margin:0;padding-left:18px}

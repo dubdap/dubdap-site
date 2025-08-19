@@ -1,0 +1,8 @@
+<svg viewBox='0 0 120 80' xmlns='http://www.w3.org/2000/svg'>
+  <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+    <stop offset='0' stop-color='#7c5cff'/><stop offset='1' stop-color='#48d4b5'/></linearGradient></defs>
+  <rect width='120' height='80' rx='12' fill='url(#g)'/>
+  <g fill='#0b0b0f' font-family='system-ui,-apple-system' font-size='14' font-weight='700'>
+    <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle'>Dubdap</text>
+  </g>
+</svg>

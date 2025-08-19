@@ -1,0 +1,1 @@
+console.log('Dubdap static site loaded');
